@@ -1,3 +1,39 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  body {
+    font-family: 'Source Sans Pro', sans-serif;
+  }
+}
+
+@layer components {
+  .container {
+    @apply max-w-7xl w-full mx-auto px-4;
+  }
+
+  .row {
+    @apply flex -mx-2;
+  }
+  .col {
+    @apply px-2;
+  }
+
+  .input {
+    @apply w-full rounded px-3 py-2;
+  }
+
+  .button {
+    @apply block rounded py-2 px-4;
+  }
+  .button.white {
+    @apply bg-white text-gray-800;
+  }
+}
+
+@screen xl {
+  .container {
+    @apply px-0;
+  }
+}
