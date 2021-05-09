@@ -7,7 +7,10 @@
         
       <sidebar />
 
-      <router-view />
+      <main class="wrapper">        
+        <router-view />
+        <vue-progress-bar />
+      </main>
 
     </div>
 
@@ -23,6 +26,22 @@ export default {
     Navbar,
     Sidebar,
     Drawer
+  },
+  created() {
+    this.$Progress.start()
+
+    this.$router.beforeEach((to, from, next) => {
+      this.$Progress.start()
+
+      next()
+    })
+
+    this.$router.afterEach(() => {
+      this.$Progress.finish()
+    })
+  },
+  mounted() {
+    this.$Progress.finish()
   }
 }
 </script>
