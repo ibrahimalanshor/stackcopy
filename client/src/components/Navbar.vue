@@ -3,9 +3,7 @@
     <div class="container">
       <div class="row navbar-row">
         <ul class="col navbar-nav">
-          <li><a href="" class="col navbar-link active">Question</a></li>
-          <li><a href="" class="col navbar-link">Post</a></li>
-          <li><a href="" class="col navbar-link">Jobs</a></li>
+          <li v-for="(nav, key) in navs" :key="key"><router-link :to="{ name: nav.to }" class="col navbar-link" :class="{ 'active': active === nav.name }">{{ nav.name }}</router-link></li>
         </ul>
         <div class="col navbar-toggle">
           <button v-on:click="toggleSidebar">
@@ -13,10 +11,10 @@
           </button>
         </div>
         <form action="" class="col navbar-form">
-          <input type="search" class="navbar-search input borderless" placeholder="Search">
+          <input type="search" class="navbar-search input borderless nofocus" placeholder="Search">
         </form>
         <ul class="row col">
-          <li class="col"><a href="" class="button white">Login</a></li>
+          <li class="col"><router-link :to="{ name: 'Login' }" class="button white">Login</router-link></li>
         </ul>
       </div>
     </div>
@@ -27,6 +25,25 @@
   import { mapMutations } from 'vuex'
 
   export default {
+    data() {
+      return {
+        navs: [
+          {
+            to: 'Home',
+            name: 'Home'
+          },
+          {
+            to: 'Home',
+            name: 'Question'
+          }
+        ]
+      }
+    },
+    computed: {
+      active() {
+        return this.$route.name
+      }
+    },
     methods: {
       ...mapMutations(['toggleSidebar'])
     }

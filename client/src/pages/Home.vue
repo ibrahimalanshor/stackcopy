@@ -1,5 +1,5 @@
 <template>
-  <main class="wrapper">
+  <div>
 
     <div class="heading">
       <h1 class="h2 heading-title">All Question</h1>
@@ -39,7 +39,7 @@
 
     </div>
 
-  </main>
+  </div>
 </template>
 
 <script>
