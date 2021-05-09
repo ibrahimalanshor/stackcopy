@@ -5,12 +5,46 @@
 @layer base {
   body {
     font-family: 'Source Sans Pro', sans-serif;
+    @apply text-gray-700;
   }
 }
 
 @layer components {
+  .h1, .h2, .h3, .h4, .h5, .h6 {
+    @apply font-bold text-gray-800;
+  }
+  .h1 {
+    @apply text-5xl;
+  }
+  .h2 {
+    @apply text-4xl;
+  }
+  .h3 {
+    @apply text-3xl;
+  }
+  .h4 {
+    @apply text-2xl;
+  }
+  .h5 {
+    @apply text-xl;
+  }
+  .h6 {
+    @apply text-lg;
+  }
+
+  .link {
+    @apply text-blue-700;
+  }
+  .link:hover {
+    @apply text-blue-800;
+  }
+
   .container {
     @apply max-w-7xl w-full mx-auto px-4;
+  }
+
+  .wrapper {
+    @apply flex-grow py-8;
   }
 
   .row {
@@ -21,7 +55,13 @@
   }
 
   .input {
-    @apply w-full rounded px-3 py-2;
+    @apply w-full border rounded px-3 py-2;
+  }
+  .input.lg {
+    @apply px-4 py-3;
+  }
+  .input.borderless {
+    @apply border-0;
   }
 
   .button {
@@ -30,10 +70,47 @@
   .button.white {
     @apply bg-white text-gray-800;
   }
+  .button.white:hover {
+    @apply bg-gray-100;
+  }
+
+  .badge {
+    @apply inline-block px-2 py-1 rounded text-sm;
+  }
+  .badge.bordered {
+    @apply border;
+  }
+  .badge.bordered:hover {
+    @apply bg-gray-800 text-white border-gray-800;
+  }
+
+  .card {
+    @apply border rounded;
+  }
+  .card-header {
+    @apply px-4 py-3 border-b;
+  }
+  .card-body {
+    @apply p-4;
+  }
+
+  .line-divider {
+    @apply my-8 border-gray-100;
+  }
+}
+
+@screen sm {
+  .wrapper {
+    @apply p-8;
+  }
 }
 
 @screen xl {
   .container {
     @apply px-0;
+  }
+
+  .wrapper {
+    @apply p-8;
   }
 }
