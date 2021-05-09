@@ -1,5 +1,12 @@
 # client
 
+## Dependecies
+
+* Vue
+* Vuex
+* Vue Router
+* Vue Progress Bar
+
 ## Project setup
 ```
 npm install
