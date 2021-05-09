@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <navbar />
+    <drawer />
 
     <div class="container flex">
       
@@ -53,7 +54,7 @@
 </template>
 
 <script>
-import { Navbar, Sidebar } from './components'
+import { Navbar, Sidebar, Drawer } from './components'
 import { HomeQuestion } from './components/question'
 
 export default {
@@ -61,6 +62,7 @@ export default {
   components: {
     Navbar,
     Sidebar,
+    Drawer,
     HomeQuestion
   },
   data() {
