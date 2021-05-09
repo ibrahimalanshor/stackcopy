@@ -8,7 +8,7 @@
           <li><a href="" class="col navbar-link">Jobs</a></li>
         </ul>
         <div class="col navbar-toggle">
-          <button>
+          <button v-on:click="toggleSidebar">
             <i class="fa fa-bars"></i>
           </button>
         </div>
@@ -22,6 +22,16 @@
     </div>
   </nav>
 </template>
+
+<script>
+  import { mapMutations } from 'vuex'
+
+  export default {
+    methods: {
+      ...mapMutations(['toggleSidebar'])
+    }
+  }
+</script>
 
 <style>
   .navbar {

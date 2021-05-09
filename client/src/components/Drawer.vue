@@ -1,19 +1,34 @@
 <template>
-  <div class="drawer">
-    <div class="drawer-heading">
-      <h2 class="h6">Stackcopy</h2>
-      <button>
-        <i class="fa fa-times"></i>
-      </button>
+  <transition name="slide">
+    <div class="drawer" v-show="sidebarOpen">
+      <div class="drawer-heading">
+        <h2 class="h6">Stackcopy</h2>
+        <button v-on:click="toggleSidebar">
+          <i class="fa fa-times"></i>
+        </button>
+      </div>
+      <ul class="drawer-menu">
+        <li class="drawer-list"><a href="" class="drawer-link active">Question</a></li>
+        <li class="drawer-list"><a href="" class="drawer-link">Articles</a></li>
+        <li class="drawer-list"><a href="" class="drawer-link">Jobs</a></li>
+        <li class="drawer-list"><a href="" class="drawer-link">Chalenges</a></li>
+      </ul>
     </div>
-    <ul class="drawer-menu">
-      <li class="drawer-list"><a href="" class="drawer-link active">Question</a></li>
-      <li class="drawer-list"><a href="" class="drawer-link">Articles</a></li>
-      <li class="drawer-list"><a href="" class="drawer-link">Jobs</a></li>
-      <li class="drawer-list"><a href="" class="drawer-link">Chalenges</a></li>
-    </ul>
-  </div>
+  </transition>
 </template>
+
+<script>
+  import { mapState, mapMutations } from 'vuex'
+
+  export default {
+    computed: {
+      ...mapState(['sidebarOpen'])
+    },
+    methods: {
+      ...mapMutations(['toggleSidebar'])
+    }
+  }
+</script>
 
 <style>
   .drawer {
@@ -33,6 +48,13 @@
   }
   .drawer-link:hover, .drawer-link.active {
     @apply text-gray-800;
+  }
+
+  .slide-enter, .slide-leave-to {
+    left: -100%;
+  }
+  .slide-enter-to, .slide-leave {
+    @apply left-0 transition-all;
   }
 
   @screem sm {
