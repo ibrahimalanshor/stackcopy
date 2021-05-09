@@ -2,6 +2,8 @@ const express = require('express')
 const mongoose = require('mongoose')
 const morgan = require('morgan')
 
+const routes = require('./routes')
+
 class App {
 
   constructor(port = 3000) {
@@ -20,10 +22,15 @@ class App {
 
   initConfig() {
     this.app.use(morgan('dev'))
+
+    this.app.use(express.urlencoded({ extended: true }))
+    this.app.use(express.json())
   }
 
   initRoute() {
-    this.app.use('/', (req, res) => res.json('OK'))
+    for (let [name, router] of Object.entries(routes)) {
+      this.app.use(`/api/${name}`, router)
+    }
   }
 
   listen() {
