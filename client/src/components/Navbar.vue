@@ -13,7 +13,7 @@
           </button>
         </div>
         <form action="" class="col navbar-form">
-          <input type="search" class="navbar-search input" placeholder="Search">
+          <input type="search" class="navbar-search input borderless" placeholder="Search">
         </form>
         <ul class="row col">
           <li class="col"><a href="" class="button white">Login</a></li>
