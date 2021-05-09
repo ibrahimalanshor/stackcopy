@@ -11,6 +11,12 @@
 * bcrypt
 * dayjs
 * morgan
+* jsonwebtoken
+
+## Api Endpoint
+
+* `/api/auth/login` Login User
+* `/api/auth/register` Register User
 
 ## Project setup
 ```
