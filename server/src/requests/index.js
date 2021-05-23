@@ -1,3 +1,5 @@
 module.exports = {
-  AuthRequest: require('./auth')
+  AuthRequest: require('./auth'),
+  TagRequest: require('./tag'),
+  QuestionRequest: require('./question')
 }

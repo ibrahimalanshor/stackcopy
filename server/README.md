@@ -15,8 +15,20 @@
 
 ## Api Endpoint
 
-* `/api/auth/login` Login User
-* `/api/auth/register` Register User
+### Auth
+
+* `POST` `/api/auth/login` Login User
+* `POST` `/api/auth/register` Register User
+
+### Tag
+
+* `GET` `/api/tag` Read All Tags
+* `POST` `/api/tag` Create New Tag
+
+### Question
+
+* `GET` `/api/question` Read All Questions
+* `POST` `/api/question` Create New Question 
 
 ## Project setup
 ```
