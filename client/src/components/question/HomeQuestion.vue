@@ -3,10 +3,10 @@
     <a href="" class="question-title link">{{ question.title }}</a>
     <div class="question-data">
       <div>
-        <a href="" class="badge bordered question-tag" v-for="(tag, key) in question.tags" :key="key">{{ tag }}</a>
+        <a href="" class="badge bordered question-tag" v-for="(tag, key) in question.tags" :key="key">{{ tag.name }}</a>
       </div>
       <div class="question-detail">
-        <time class="question-date">{{ question.date }}</time> by <a href="" class="link">{{ question.user }}</a>
+        <time class="question-date">{{ question.date }}</time> by <a href="" class="link">{{ question.user.name }}</a>
       </div>
     </div>
   </div>

@@ -43,47 +43,15 @@
 </template>
 
 <script>
+  import { mapState } from 'vuex'
   import { HomeQuestion } from '@/components/question'
 
   export default {
     components: {
       HomeQuestion
     },
-    data() {
-      return {
-        questions: [
-          {
-            title: 'How to store image in redux, image return an empty object',
-            tags: ['javascript', 'react'],
-            date: '40 secs ago',
-            user: 'Roby Cigar'
-          },
-          {
-            title: 'RelatedObjectDoesNotExist at /login/ User has no profile',
-            tags: ['python', 'django'],
-            date: '1 min ago',
-            user: 'Sumithran'
-          },
-          {
-            title: 'replace double backslash with one in python',
-            tags: ['pyhton', 'regex'],
-            date: '2 min ago',
-            user: 'Nessi'
-          },
-          {
-            title: 'How to check all checkboxes on selecting one in Vuejs?',
-            tags: ['javascript', 'vue.js'],
-            date: '4 min ago',
-            user: 'rcbxd'
-          },
-          {
-            title: 'Nats.io multithreading and async',
-            tags: ['python', 'pyhton-2.7', 'tornado', 'python-multithreading', 'nats.io'],
-            date: '40 secs ago',
-            user: 'Roby Cigar'
-          },
-        ]
-      }
+    computed: {
+      ...mapState('question', ['questions'])
     }
   }
 </script>

@@ -18,6 +18,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 import { Navbar, Sidebar, Drawer } from './components'
 
 export default {
@@ -26,6 +27,9 @@ export default {
     Navbar,
     Sidebar,
     Drawer
+  },
+  methods: {
+    ...mapActions('question', ['get'])
   },
   created() {
     this.$Progress.start()
@@ -42,6 +46,7 @@ export default {
   },
   mounted() {
     this.$Progress.finish()
+    this.get()
   }
 }
 </script>
