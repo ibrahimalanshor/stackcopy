@@ -1,4 +1,5 @@
 module.exports = {
   handle: require('./handle'),
-  public: require('./public')
+  public: require('./public'),
+  slugify: require('./slugify')
 }
