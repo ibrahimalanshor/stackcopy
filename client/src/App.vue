@@ -1,6 +1,9 @@
 <template>
   <div id="app">
     <navbar />
+
+    <notification />
+
     <drawer />
 
     <div class="container flex">
@@ -19,17 +22,18 @@
 
 <script>
 import { mapActions } from 'vuex'
-import { Navbar, Sidebar, Drawer } from './components'
+import { Navbar, Sidebar, Drawer, Notification } from './components'
 
 export default {
   name: 'App',
   components: {
     Navbar,
     Sidebar,
-    Drawer
+    Drawer,
+    Notification
   },
   methods: {
-    ...mapActions('question', ['get'])
+    ...mapActions('question', ['get']),
   },
   created() {
     this.$Progress.start()

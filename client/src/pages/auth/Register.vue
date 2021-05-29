@@ -41,7 +41,7 @@
 </template>
 
 <script>
-  import { mapActions } from 'vuex'
+  import { mapActions, mapMutations } from 'vuex'
 
   const errors = {
     name: {
@@ -70,6 +70,7 @@
     },
     methods: {
       ...mapActions('auth', ['register']),
+      ...mapMutations(['createNotification']),
       async process() {
         this.loading = true
 
@@ -79,6 +80,8 @@
             email: this.email,
             password: this.password,
           })
+
+          this.createNotification('Register Success');
 
           this.$router.push({ name: 'Login' })
         } catch (err) {
