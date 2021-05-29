@@ -5,7 +5,7 @@ Vue.use(Router)
 
 import { Home } from '@/pages'
 import { Login, Register } from '@/pages/auth'
-import { guest } from './guards'
+import { guest, checkauth } from './guards'
 
 const routes = [
   {
@@ -32,6 +32,7 @@ const router = new Router({
   routes
 })
 
+router.beforeEach(checkauth)
 router.beforeEach(guest)
 
 export default router
