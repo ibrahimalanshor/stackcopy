@@ -86,6 +86,9 @@
   .button {
     @apply inline-block rounded py-2 px-4;
   }
+  .button:disabled {
+    @apply opacity-50;
+  }
   .button.white {
     @apply bg-white text-gray-800;
   }

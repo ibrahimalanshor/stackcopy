@@ -6,6 +6,7 @@ import state from './state'
 import mutations from './mutations'
 
 import question from './question'
+import auth from './auth'
 
 Vue.use(Vuex)
 
@@ -14,6 +15,7 @@ export default new Vuex.Store({
   state,
   mutations,
   modules: {
-    question
+    question,
+    auth
   }
 })

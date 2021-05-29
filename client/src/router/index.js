@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
+Vue.use(Router)
+
 import { Home } from '@/pages'
 import { Login, Register } from '@/pages/auth'
 
@@ -21,8 +23,6 @@ const routes = [
     component: Register
   }
 ]
-
-Vue.use(Router)
 
 export default new Router({
   mode: 'history',
