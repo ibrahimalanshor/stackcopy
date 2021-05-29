@@ -14,7 +14,23 @@
           <input type="search" class="navbar-search input borderless nofocus" placeholder="Search">
         </form>
         <ul class="row col">
-          <li class="col"><router-link :to="{ name: 'Login' }" class="button white">Login</router-link></li>
+          <li class="col" v-if="login">
+            <dropdown>
+              <template v-slot:toggle>
+                <img src="@/assets/user.jpg" class="w-8 h-8 object-cover rounded-full">
+              </template>
+
+              <ul class="dropdown-menu">
+                <li class="dropdown-item dropdown-header"><a href="" class="dropdown-link">
+                  <span class="text-gray-800 font-semibold block">{{ user.name }}</span>
+                  <small class="text-gray-500">@gamalbro</small>
+                </a></li>
+                <li class="dropdown-item"><a class="dropdown-link" href="">Profile</a></li>
+                <li class="dropdown-item"><a class="dropdown-link" href="#" v-on:click="logout">Logout</a></li>
+              </ul>
+            </dropdown>
+          </li>
+          <li class="col" v-else><router-link :to="{ name: 'Login' }" class="button white">Login</router-link></li>
         </ul>
       </div>
     </div>
@@ -22,9 +38,13 @@
 </template>
 
 <script>
-  import { mapMutations } from 'vuex'
+  import { mapMutations, mapState, mapGetters } from 'vuex'
+  import Dropdown from './Dropdown'
 
   export default {
+    components: {
+      Dropdown
+    },
     data() {
       return {
         navs: [
@@ -40,12 +60,15 @@
       }
     },
     computed: {
+      ...mapState('auth', ['login']),
+      ...mapGetters('auth', ['user']),
       active() {
         return this.$route.name
       }
     },
     methods: {
-      ...mapMutations(['toggleSidebar'])
+      ...mapMutations(['toggleSidebar']),
+      ...mapMutations('auth', ['logout']),
     }
   }
 </script>
