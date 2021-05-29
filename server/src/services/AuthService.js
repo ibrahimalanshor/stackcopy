@@ -16,7 +16,9 @@ class AuthService {
   async attempt(user) {
     const payload = {
       name: user.name,
-      email: user.email
+      username: user.username,
+      email: user.email,
+      photo: user.photo
     }
 
     const appToken = process.env.APP_TOKEN

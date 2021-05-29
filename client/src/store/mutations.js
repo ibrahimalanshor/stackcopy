@@ -10,9 +10,7 @@ export default {
     state.notification.count = 0
   },
   checkNotification: state => {
-    const { active, count, text } = state.notification
-
-    console.log(active, count, text);
+    const { active, count } = state.notification
 
     if (active) {
       if (count >= 1) {

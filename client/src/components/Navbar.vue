@@ -17,13 +17,13 @@
           <li class="col" v-if="login">
             <dropdown>
               <template v-slot:toggle>
-                <img src="@/assets/user.jpg" class="w-8 h-8 object-cover rounded-full">
+                <img :src="user.photo" class="w-8 h-8 object-cover rounded-full">
               </template>
 
               <ul class="dropdown-menu">
                 <li class="dropdown-item dropdown-header"><a href="" class="dropdown-link">
-                  <span class="text-gray-800 font-semibold block">{{ user.name }}</span>
-                  <small class="text-gray-500">@gamalbro</small>
+                  <span class="navbar-user-name">{{ user.name }}</span>
+                  <small class="navbar-user-username">@{{ user.username }}</small>
                 </a></li>
                 <li class="dropdown-item"><a class="dropdown-link" href="">Profile</a></li>
                 <li class="dropdown-item"><a class="dropdown-link" href="#" v-on:click="logout">Logout</a></li>
@@ -94,6 +94,12 @@
   }
   .navbar-search {
     @apply text-gray-800;
+  }
+  .navbar-user-name {
+    @apply text-gray-800 font-semibold block;
+  }
+  .navbar-user-username {
+    @apply text-gray-500;
   }
 
   @screen sm {

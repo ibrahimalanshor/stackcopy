@@ -2,6 +2,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const morgan = require('morgan')
 const cors = require('cors')
+const path = require('path')
 
 const routes = require('./routes')
 
@@ -26,6 +27,7 @@ class App {
 
     this.app.use(express.urlencoded({ extended: true }))
     this.app.use(express.json())
+    this.app.use('/public', express.static(path.join(__dirname, '../public')))
 
     this.app.use(cors())
   }
