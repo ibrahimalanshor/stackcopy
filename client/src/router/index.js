@@ -5,6 +5,7 @@ Vue.use(Router)
 
 import { Home } from '@/pages'
 import { Login, Register } from '@/pages/auth'
+import { guest } from './guards'
 
 const routes = [
   {
@@ -15,16 +16,22 @@ const routes = [
   {
     name: 'Login',
     path: '/login',
-    component: Login
+    component: Login,
+    meta: { guest: true }
   },
   {
     name: 'Register',
     path: '/register',
-    component: Register
+    component: Register,
+    meta: { guest: true }
   }
 ]
 
-export default new Router({
+const router = new Router({
   mode: 'history',
   routes
 })
+
+router.beforeEach(guest)
+
+export default router
