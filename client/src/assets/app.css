@@ -125,6 +125,34 @@
   .line-divider {
     @apply my-8 border-gray-100;
   }
+
+  .dropdown {
+    @apply relative;
+  }
+  .dropdown-toggle {
+    @apply cursor-pointer;
+  }
+  .dropdown-menu {
+    @apply absolute top-2 right-0 w-48 bg-white text-gray-600 rounded shadow;
+  }
+  .dropdown-link {
+    @apply px-3 py-2 block;
+  }
+  .dropdown-link:hover {
+    @apply bg-gray-100;
+  }
+  .dropdown-header {
+    @apply border-b border-gray-100
+  }
+  .dropdown-item:first-child .dropdown-link {
+    @apply rounded-t;
+  }
+  .dropdown-item:first-child:not(.dropdown-header) {
+    @apply mt-2;
+  }
+  .dropdown-item:last-child {
+    @apply rounded-b mb-2;
+  }
 }
 
 @screen sm {
