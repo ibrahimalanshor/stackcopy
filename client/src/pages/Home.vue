@@ -1,9 +1,12 @@
 <template>
   <div>
 
-    <div class="heading">
-      <h1 class="h2 heading-title">All Question</h1>
-      <p class="heading-sub">Total about 723.223.499 questions</p>
+    <div class="home-heading">
+      <div class="heading">
+        <h1 class="h2 heading-title">All Question</h1>
+        <p class="heading-sub">Total about 723.223.499 questions</p>
+      </div>
+      <router-link :to="{ name: 'New' }" class="button blue" v-if="login">Ask Question</router-link>
     </div>
 
     <hr class="line-divider">
@@ -19,7 +22,13 @@
       
       <main class="main">
         
-        <home-question v-for="(question, key) in questions" :key="key" :question="question" />
+        <div v-if="questions.length">
+          <home-question v-for="(question, key) in questions" :key="key" :question="question" />
+        </div>
+
+        <div class="alert alert-blue" v-else>
+          Empty Question, <a href="" class="font-semibold">create one</a>
+        </div>
 
       </main>
 
@@ -51,12 +60,17 @@
       HomeQuestion
     },
     computed: {
-      ...mapState('question', ['questions'])
+      ...mapState('question', ['questions']),
+      ...mapState('auth', ['login'])
     }
   }
 </script>
 
 <style>
+  .home-heading {
+    @apply flex justify-between items-end;
+  }
+
   .heading-title {
     @apply mb-3;
   }

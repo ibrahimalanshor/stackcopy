@@ -5,6 +5,7 @@ const methods = require('./methods')
 const QuestionSchema = new Schema({
   title: String,
   slug: String,
+  content: String,
   user: {
     type: Schema.Types.ObjectId,
     ref: 'user'
@@ -17,7 +18,7 @@ const QuestionSchema = new Schema({
   ]
 }, { timestamps: true })
 
-QuestionSchema.pre('validate', async function () {
+QuestionSchema.pre('save', async function () {
   await this.makeSlug()
 })
 

@@ -5,6 +5,7 @@ const { unique, isArray, existsUser } = require('./validator')
 
 const rules = [
   body('title').exists().isString().isLength({ min: 5 }).custom(unique),
+  body('content').exists().isString().isLength({ min: 30 }),
   body('tags').exists().custom(isArray),
   body('user').exists().custom(existsUser)
 ]

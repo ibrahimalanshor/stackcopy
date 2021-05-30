@@ -70,9 +70,15 @@
 
           this.$router.push({ name: 'Home' })
         } catch (err) {
+          this.errors = {...errors}
+          
           if (err.response.status === 422) {
-            this.errors = {...errors}
             this.addError(err.response.data.errors)
+          } else {
+            this.errors.password = {
+              error: true,
+              text: err.response.data
+            }
           }
         } finally {
           this.loading = false

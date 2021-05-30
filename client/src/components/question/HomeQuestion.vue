@@ -1,6 +1,6 @@
 <template>
   <div class="question">
-    <a href="" class="question-title link">{{ question.title }}</a>
+    <router-link :to="{ name: 'Read', params: { user: question.user.username, question: question.slug } }" class="question-title link">{{ question.title }}</router-link>
     <div class="question-data">
       <div>
         <a href="" class="badge bordered question-tag" v-for="(tag, key) in question.tags" :key="key">{{ tag.name }}</a>

@@ -7,6 +7,7 @@ import mutations from './mutations'
 
 import question from './question'
 import auth from './auth'
+import tag from './tag'
 
 Vue.use(Vuex)
 
@@ -16,6 +17,7 @@ export default new Vuex.Store({
   mutations,
   modules: {
     question,
-    auth
+    auth,
+    tag
   }
 })

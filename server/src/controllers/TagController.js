@@ -4,7 +4,10 @@ class TagController {
 
   async get(req, res) {
     try {
-      const tags = await Tag.find({})
+      const name = req.query.search
+      const search = name ? { name: { $regex: name, $options: 'i' } } : {}
+
+      const tags = await Tag.find(search)
 
       return res.status(200).json(tags)
     } catch (err) {

@@ -23,4 +23,7 @@ for (let [name, method] of Object.entries(methods)) {
   UserSchema.methods[name] = method
 }
 
+UserSchema.set('toObject', { getters: true })
+UserSchema.set('toJSON', { getters: true })
+
 module.exports = UserSchema
