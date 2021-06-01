@@ -4,6 +4,7 @@ import createPersistedState from 'vuex-persistedstate'
 
 import state from './state'
 import mutations from './mutations'
+import getters from './getters'
 
 import question from './question'
 import auth from './auth'
@@ -14,10 +15,11 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   plugins: [createPersistedState()],
   state,
+  getters,
   mutations,
   modules: {
     question,
     auth,
-    tag
+    tag,
   }
 })

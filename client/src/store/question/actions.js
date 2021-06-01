@@ -1,14 +1,23 @@
 export default {
-  async get({ commit, rootState: { api } }) {
-    const questions = await api.get('/question')
+  async get({ commit, rootState: { api } }, page) {
+    const questions = await api.get('/question', {
+      params: {
+        page
+      }
+    })
 
     commit('setQuestion', questions.data)
   },
-  async store({ rootState: { api }}, data) {
-    const question = await api.post('/question', data)
+  async store({ dispatch, rootState: { api }, rootGetters: { headers }, }, data) {
+    const question = await api.post('/question', data, headers)
 
-    console.log(data);
+    await dispatch('get')
 
-    return question
+    return question.data
+  },
+  async find({ rootState: { api } }, { user, slug }) {
+    const question = await api.get(`/question/${user}/${slug}`)
+
+    return question.data
   }
 }

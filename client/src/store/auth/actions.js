@@ -1,8 +1,8 @@
 export default {
   async login({ commit, rootState: { api } }, credentials) {
-    const token = await api.post('/auth/login', credentials)
+    const { data: token } = await api.post('/auth/login', credentials)
 
-    commit('login', token.data)
+    commit('login', token)
   },
   async register({ rootState: { api }}, credentials) {
     const user = await api.post('/auth/register', credentials)

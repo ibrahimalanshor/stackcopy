@@ -4,7 +4,7 @@ module.exports = {
   unique: title => {
     return Question.exists({ title }).then(exists => {
       if (exists) {
-        return Promise.reject('Question already exists')
+        return Promise.reject(' already exists')
       }
     })
   },

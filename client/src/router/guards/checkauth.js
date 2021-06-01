@@ -5,7 +5,7 @@ export default (to, from, next) => {
 
   if (login) {
     const exp = store.getters['auth/user'].exp * 1000
-    
+
     if (Date.now() > exp) {
       store.commit('auth/logout')
     }

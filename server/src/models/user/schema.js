@@ -12,7 +12,7 @@ const UserSchema = new Schema({
     get: photoSrc
   },
   password: String,
-})
+}, { id: false })
 
 UserSchema.pre('validate', async function () {
   await this.encrypt()

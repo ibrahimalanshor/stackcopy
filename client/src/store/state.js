@@ -9,5 +9,5 @@ export default {
     active: false,
     text: '',
     count: 0
-  }
+  },
 }

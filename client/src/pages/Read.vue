@@ -23,7 +23,7 @@
 
     <div class="home-row">
       <main class="main mb-5">
-        <article class="article content" v-html="question.content"></article>
+        <article class="article content" v-html="parsedContent"></article>
 
         <hr class="line-divider">
 
@@ -117,7 +117,9 @@
 </template>
 
 <script>
-  import { mapGetters } from 'vuex'
+  import { mapActions } from 'vuex'
+  import marked from 'marked'
+  import hljs from 'highlight.js'
 
   export default {
     data() {
@@ -126,14 +128,27 @@
       }
     },
     computed: {
-      ...mapGetters('question', ['findQuestion'])
+      parsedContent() {
+        return marked(this.question.content)
+      }
+    },
+    methods: {
+      ...mapActions('question', ['find'])
     },
     beforeRouteEnter(to, from, next) {
-      const { user, question } = to.params
+      const { user, question: slug } = to.params
 
-      next(vm => {
-        vm.question = vm.findQuestion(user, question);
+      next(async (vm) => {
+        const result = await vm.find({
+          user,
+          slug
+        })
+
+        vm.question = result
       })
+    },
+    mounted() {
+      hljs.highlightAll()
     }
   }
 </script>

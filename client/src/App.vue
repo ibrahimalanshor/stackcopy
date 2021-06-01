@@ -32,6 +32,13 @@ export default {
     Drawer,
     Notification
   },
+  watch: {
+    $route(to) {
+      if (to.name === 'Home') {
+        this.get(to.query.page)
+      }
+    }
+  },
   methods: {
     ...mapActions('question', ['get']),
   },
@@ -47,10 +54,11 @@ export default {
     this.$router.afterEach(() => {
       this.$Progress.finish()
     })
+
   },
   mounted() {
     this.$Progress.finish()
-    this.get()
+    this.get(this.$route.query.page)
   }
 }
 </script>

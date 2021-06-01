@@ -4,7 +4,7 @@
     <div class="home-heading">
       <div class="heading">
         <h1 class="h2 heading-title">All Question</h1>
-        <p class="heading-sub">Total about 723.223.499 questions</p>
+        <p class="heading-sub">Total {{ questions.totalDocs }} questions</p>
       </div>
       <router-link :to="{ name: 'New' }" class="button blue" v-if="login">Ask Question</router-link>
     </div>
@@ -22,8 +22,22 @@
       
       <main class="main">
         
-        <div v-if="questions.length">
-          <home-question v-for="(question, key) in questions" :key="key" :question="question" />
+        <div v-if="questions.totalDocs">
+          <home-question v-for="(question, key) in questions.docs" :key="key" :question="question" />
+
+          <ul class="pagination mb-5">
+            <li class="pagination-item" v-if="questions.hasPrevPage">
+              <router-link :to="{ name: 'Home', query: { page: questions.prevPage } }" class="pagination-link">prev</router-link>
+            </li>
+
+            <li class="pagination-item" v-for="page in questions.totalPages" :key="page">
+              <router-link :to="{ name: 'Home', query: { page } }" class="pagination-link" :class="{ 'active': questions.page === page }">{{ page }}</router-link>
+            </li>
+
+            <li class="pagination-item" v-if="questions.hasNextPage">
+              <router-link :to="{ name: 'Home', query: { page: questions.nextPage } }" class="pagination-link">next</router-link>  
+            </li>
+          </ul>
         </div>
 
         <div class="alert alert-blue" v-else>

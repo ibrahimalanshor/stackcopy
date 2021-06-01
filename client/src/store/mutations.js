@@ -20,5 +20,8 @@ export default {
         state.notification.count++
       }
     }
+  },
+  addTokenHeader: (state, token) => {
+    state.api.defaults.headers.common['authorization'] = token
   }
 }

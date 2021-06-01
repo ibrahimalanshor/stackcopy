@@ -1,4 +1,5 @@
 const { Question, Tag } = require('../models')
+const { QuestionRepository } = require('../repositories')
 
 class QuestionService {
 
@@ -6,7 +7,7 @@ class QuestionService {
     const tags = await this.getTag(body.tags)
     const question = await Question.create({ ...body, tags })
 
-    return question
+    return QuestionRepository.find(question._id)
   }
 
   async getTag(tags) {
